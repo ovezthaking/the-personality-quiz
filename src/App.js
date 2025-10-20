@@ -15,6 +15,14 @@ function App() {
       question: "What's your favorite color?",
       options: ["Red 🔴", "Blue 🔵", "Green 🟢", "Yellow 🟡"],
     },
+    {
+      question: "Which environment do you feel most connected to?",
+      options: ["Volcano 🌋", "Ocean 🌊", "Forest 🌳", "Sky ☁️"],
+    },
+    {
+      question: "What’s your preferred activity?",
+      options: ["Campfire storytelling 🔥", "Sailing ⛵", "Gardening 🌱", "Flying a kite 🪁"],
+    },
   ];
 
   const keywords = {
@@ -29,6 +37,14 @@ function App() {
     "Blue 🔵": "Water",
     "Green 🟢": "Earth",
     "Yellow 🟡": "Air",
+    "Volcano 🌋": "Fire",
+    "Ocean 🌊": "Water",
+    "Forest 🌳": "Earth",
+    "Sky ☁️": "Air",
+    "Campfire storytelling 🔥": "Fire",
+    "Sailing ⛵": "Water",
+    "Gardening 🌱": "Earth",
+    "Flying a kite 🪁": "Air",
   };
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -45,16 +61,16 @@ function App() {
   };
 
 
-  function determineElement(answers){
+  function determineElement(answers) {
     const counts = {};
-    answers.forEach(function(answer){
+    answers.forEach(function (answer) {
       const element = elements[answer];
-      counts[element] = (counts[element] || 0) +1;
+      counts[element] = (counts[element] || 0) + 1;
     });
-    return Object.keys(counts).reduce(function(a,b){
-      return counts[a] > counts[b] ? a : b
-    });
-  };
+    return Object.keys(counts).reduce(function (a, b) {
+      return counts[a] > counts[b] ? a : b;
+    }, Object.keys(counts)[0]); 
+  }
 
   async function fetchArtwork(keyword){
     setLoading(true);
