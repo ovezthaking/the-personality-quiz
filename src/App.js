@@ -33,7 +33,6 @@ function App() {
 
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState([]);
-  const [userName, setUserName] = useState('');
   const [element, setElement] = useState('');
   const [artwork, setArtwork] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -43,11 +42,6 @@ function App() {
   function handleAnswer(answer){
     setAnswers([...answers, answer]);
     setCurrentQuestionIndex(currentQuestionIndex + 1);
-  };
-
-  
-  function handleUserFormSubmit(name){
-    setUserName(name);
   };
 
 
@@ -110,8 +104,6 @@ function App() {
     },
     [currentQuestionIndex]
   );
-
-
 
 
   return (
